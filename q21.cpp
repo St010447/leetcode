@@ -24,7 +24,6 @@ public:
         }
 
         while (l1->next)
-
         {
             counting[l1->val]++;
             l1 = l1->next;
