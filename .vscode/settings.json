@@ -19,6 +19,7 @@
         "utility": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "vector": "cpp"
     }
 }
