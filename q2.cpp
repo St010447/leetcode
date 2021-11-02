@@ -1,65 +1,69 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-#include <vector>
-using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
 class Solution
 {
 public:
-    int k1 = 1;
-    int k2 = 1;
-    int t1 = 0;
-    int t2 = 0;
-    int total = 0;
-    vector<int> rev_total;
-    ListNode *list_head1 = new ListNode();
-    ListNode *list_head2 = new ListNode();
+    ListNode *head = nullptr;
+    ListNode *temp = nullptr;
 
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
-        do
+        head = l1;
+        int sum = 0;
+        bool carry = false;
+        while (l1 && l2)
         {
-            list_head1 = l1;
-            if (l1->next)
+            sum = l1->val + l2->val;
+            if (carry == true)
             {
-                t1 += l1->val * k1;
-                k1 *= 10;
+                sum += 1;
+            }
+            if (sum > 9)
+            {
+                carry = true;
+                sum %= 10;
             }
             else
             {
-                t1 = 0;
+                carry = false;
             }
+            l1->val = sum;
+            temp = l1;
+            l1 = l1->next;
+            l2 = l2->next;
         }
-
-        while (l1->next);
-
-        do
+        if (l2)
         {
-            list_head2 = l2;
-            if (l2->next)
+            temp->next = l2;
+            l1 = temp->next;
+        }
+        while (carry)
+        {
+            if (l1 == nullptr)
             {
-                t2 += l2->val * k2;
-                k2 *= 10;
+                ListNode *newnode = new ListNode(0);
+                temp->next = newnode;
+                l1 = newnode;
+            }
+            l1->val += 1;
+            if (l1->val > 9)
+            {
+                l1->val %= 10;
             }
             else
             {
-                t2 = 0;
+                carry = 0;
             }
+            temp = l1;
+            l1 = l1->next;
         }
-
-        while (l2->next);
-        total = t1 + t2;
-        while (total / 10 != 0)
-        {
-        }
-
-        return;
+        return head;
     }
 };
