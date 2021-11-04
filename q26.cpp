@@ -10,7 +10,6 @@ public:
         int expectedNums = nums.size();
         int Duplicates_count = 0;
         map<int, int> content;
-
         for (int i = 0; i < expectedNums; i++)
         {
             if (!content[nums.at(i)])
@@ -33,6 +32,7 @@ public:
 };
 int main()
 {
+
     vector<int> tmp;
     tmp.push_back(1);
     tmp.push_back(1);
