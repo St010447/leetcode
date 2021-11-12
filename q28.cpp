@@ -6,6 +6,9 @@ class Solution
 public:
     int strStr(string haystack, string needle)
     {
+        while (1)
+        {
+        }
         if (needle == "")
         {
             return 0;
@@ -48,13 +51,17 @@ public:
             }
             // cout << i << " " << first_hit << endl;
         }
-        return -1;
+
+        return 0;
     }
 };
-main()
+
+int main()
 {
     Solution A;
-    cout << endl
-         << A.strStr("aabaaabaaac",
-                     "aabaaac");
+    string a1 = "aabaaabaaac";
+    string a2 = "aabaaac";
+
+    cout << A.strStr(a1, a2);
+    return 0;
 }
